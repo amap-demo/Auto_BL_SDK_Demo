@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.amap.gbl.sdkdemo.MainActivity">
+
+    <com.autonavi.gbl.map.GlMapSurface
+        android:id="@+id/mapview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/tv_map_center_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="+"
+        android:textColor="#f00"
+        android:textSize="25sp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_map_version_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="mapVersion"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/tv_map_level_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="mapLevel"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_zoom_in"
+            style="@style/btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="放大"
+            android:textColor="#f00"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_zoom_out"
+            style="@style/btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="缩小"
+            android:textColor="#f00"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+
+     <HorizontalScrollView
+        android:id="@+id/horscrov"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_alignParentBottom="true"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_center_lon_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="地图中心："
+                    android:textColor="#f00"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/et_center_lon_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:text="116.623456,39.992345"
+                    android:hint="请输入经纬度"/>
+
+                <TextView
+                    android:id="@+id/tv_car_plate_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="车牌："
+                    android:textColor="#f00"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/et_car_plate_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:text="闽D12345"
+                    android:hint="请输入车牌号"/>
+
+                <CheckBox android:id="@+id/cb_route_congestion"
+                    style="@style/btn"
+                    android:text="躲避拥堵"
+                    android:checked="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#f00"
+                    android:textSize="16sp"/>
+                <CheckBox android:id="@+id/cb_route_toll"
+                    style="@style/btn"
+                    android:text="避免收费"
+                    android:checked="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#f00"
+                    android:textSize="16sp"/>
+                <CheckBox android:id="@+id/cb_route_avoid_highway"
+                    style="@style/btn"
+                    android:text="避免高速"
+                    android:checked="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#f00"
+                    android:textSize="16sp"/>
+                <CheckBox android:id="@+id/cb_route_highway"
+                    style="@style/btn"
+                    android:text="优先高速"
+                    android:checked="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#f00"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_alignParentBottom="true"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_start_point"
+                    style="@style/btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="设置起点"
+                    android:textColor="#f00"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btn_via_point"
+                    style="@style/btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="设置中途点"
+                    android:textColor="#f00"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btn_end_point"
+                    style="@style/btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="设置终点"
+                    android:textColor="#f00"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btn_car_plate"
+                    style="@style/btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="设置车牌"
+                    android:textColor="#f00"
+                    android:textSize="16sp" />
+
+                <ToggleButton android:id="@+id/btn_route_restrict"
+                    style="@style/btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textOn="取消限行"
+                    android:textOff="设置限行"
+                    android:textColor="#f00"
+                    android:textSize="16sp"/>
+
+                <ToggleButton android:id="@+id/btn_route_truck"
+                    style="@style/btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textOn="设置常规"
+                    android:textOff="设置货车"
+                    android:textColor="#f00"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_alignParentBottom="true"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_aos_route"
+                    style="@style/btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AOS算路"
+                    android:textColor="#f00"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btn_online_route"
+                    style="@style/btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="在线算路"
+                    android:textColor="#f00"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btn_offline_route"
+                    style="@style/btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="离线算路"
+                    android:textColor="#f00"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btn_clear_route"
+                    style="@style/btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="清除路线"
+                    android:textColor="#f00"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btn_select_route"
+                    style="@style/btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="切换算路"
+                    android:textColor="#f00"
+                    android:textSize="16sp" />
+
+                <ToggleButton android:id="@+id/btn_route_preview"
+                    style="@style/btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textOn="退出全览"
+                    android:textOff="全览路线"
+                    android:textColor="#f00"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+</RelativeLayout>

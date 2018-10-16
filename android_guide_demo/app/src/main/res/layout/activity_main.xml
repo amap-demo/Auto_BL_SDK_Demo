@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/activity_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.amap.gbl.sdkdemo.MainActivity">
+
+    <com.autonavi.gbl.map.GlMapSurface
+        android:id="@+id/mapview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <Button
+        android:id="@+id/btn_start_navi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_sim_navi"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="进入导航"/>
+
+    <Button
+        android:id="@+id/btn_sim_navi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_start_cruise"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="模拟导航"/>
+
+    <Button
+        android:id="@+id/btn_start_cruise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/start_route"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="进入巡航"/>
+
+    <Button
+        android:id="@+id/start_route"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="算路"/>
+
+    <TextView
+        android:id="@+id/tv_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="location"/>
+
+    <TextView
+        android:id="@+id/cruise_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tv_text"
+        android:text="cruise"/>
+
+    <TextView
+        android:id="@+id/sound_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/cruise_text"
+        android:text="sound"/>
+
+    <TextView
+        android:id="@+id/tv_naviinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/sound_text"
+        android:text="透出引导信息"/>
+
+    <Button
+        android:id="@+id/btn_preview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="全览"/>
+
+    <Button
+        android:id="@+id/btn_stop_navi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="停止导航"/>
+    <ToggleButton
+        android:id="@+id/btn_broadcast_model"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_above="@+id/btn_preview"
+        android:layout_alignParentEnd="true"
+        android:textOff="新手详细"
+        android:textOn="经典简洁"
+        />
+    <ImageView
+        android:id="@+id/iv_cross"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+         />
+
+
+</RelativeLayout>
