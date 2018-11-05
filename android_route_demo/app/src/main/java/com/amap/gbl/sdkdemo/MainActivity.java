@@ -289,6 +289,7 @@ public class MainActivity extends AppCompatActivity implements IRouteObserverPre
         param.groupMask = ALCGroup.GROUP_MASK_BL_AE;  //打印BL和引擎
         param.pPlatformUtil = pPlatformUtil;
         param.restConfigPath = pcCfgFilePath;
+
         //网络相关
         //公众正式网服务器类型;
         int publicServerType = ServiceManagerEnum.AosProductionEnv;
@@ -907,7 +908,7 @@ public class MainActivity extends AppCompatActivity implements IRouteObserverPre
         {
             mRouteAosOption.setCarType(0);
         }
-        String policy = "";
+        String policy = "1";
         if(bRouteAvoidCongestion)
         {
             policy = policy + "|2";
@@ -936,14 +937,11 @@ public class MainActivity extends AppCompatActivity implements IRouteObserverPre
         for (int i = 0; i < policyList.length; i++) {
             Log.i(TAG, "initAosRoutePara: " + policyList[i]);
         }
-        if( policy.toString().equals("0".toString()) )
+        if( policy.toString().equals("".toString()) )
         {
             policy = "1";
         }
-        else
-        {
-            policy = policy.substring(1);
-        }
+
         mRouteAosOption.setPolicy2(policy);
         Log.i(TAG, "RouteActivity aosRoute policy：" + policy);
 
