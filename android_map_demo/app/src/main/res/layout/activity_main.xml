@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.amap.gbl.sdkdemo.MainActivity">
+
+    <com.autonavi.gbl.map.GlMapSurface
+        android:id="@+id/mapview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <TextView
+        android:id="@+id/tv_msg1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="msg1"
+        android:textColor="#f00"
+        android:textSize="@dimen/size14"/>
+
+    <TextView
+        android:id="@+id/tv_msg2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="msg2"
+        android:textColor="#ff0"
+        android:textSize="@dimen/size14"/>
+
+
+    <HorizontalScrollView
+        android:id="@+id/horscrov"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_show_road"
+                    style="@style/btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="二维路网"
+                    android:textColor="#f00"
+                    android:textSize="@dimen/size14"/>
+
+                <Button
+                    android:id="@+id/btn_show_road_arrow"
+                    style="@style/btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="二维道路箭头"
+                    android:textColor="#f00"
+                    android:textSize="@dimen/size14"/>
+
+                <Button
+                    android:id="@+id/btn_show_region"
+                    style="@style/btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="二维背景面"
+                    android:textColor="#f00"
+                    android:textSize="@dimen/size14"/>
+
+                <Button
+                    android:id="@+id/btn_show_build_model"
+                    style="@style/btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="二维建筑物"
+                    android:textColor="#f00"
+                    android:textSize="@dimen/size14"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_day"
+                    style="@style/btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="昼夜模式"
+                    android:textColor="#f00"
+                    android:textSize="@dimen/size14"/>
+
+                <Button
+                    android:id="@+id/btn_show_simple3d_on"
+                    style="@style/btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="简易三维"
+                    android:textColor="#f00"
+                    android:textSize="@dimen/size14"/>
+
+                <Button
+                    android:id="@+id/btn_traffic"
+                    style="@style/btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="交通TMC"
+                    android:textColor="#f00"
+                    android:textSize="@dimen/size14"/>
+                <Button
+                    android:id="@+id/btn_show_poi"
+                    style="@style/btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="标注、poi"
+                    android:textColor="#f00"
+                    android:textSize="@dimen/size14"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_mode"
+                    style="@style/btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="车模式"
+                    android:textColor="#f00"
+                    android:textSize="@dimen/size14"/>
+
+                <Button
+                    android:id="@+id/btn_zoomin"
+                    style="@style/btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="放大"
+                    android:textColor="#f00"
+                    android:textSize="@dimen/size14"/>
+
+                <Button
+                    android:id="@+id/btn_zoomout"
+                    style="@style/btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="缩小"
+                    android:textColor="#f00"
+                    android:textSize="@dimen/size14"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btn_pointOverlay"
+                    style="@style/btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="point扎点"
+                    android:textColor="#f00"
+                    android:textSize="@dimen/size14" />
+                <Button
+                    android:id="@+id/btn_pointVisiable"
+                    style="@style/btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ponit可见"
+                    android:textColor="#f00"
+                    android:textSize="@dimen/size14" />
+                <Button
+                    android:id="@+id/btn_openlayeron"
+                    style="@style/btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="开放图层"
+                    android:textColor="#f00"
+                    android:textSize="@dimen/size14"/>
+            </LinearLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
+</RelativeLayout>
