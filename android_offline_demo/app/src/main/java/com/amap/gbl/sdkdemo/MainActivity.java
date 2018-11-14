@@ -198,10 +198,13 @@ public class MainActivity extends AppCompatActivity {
         BLInitParam blInitParam = new BLInitParam();
         //配置文件路径
         blInitParam.dataPath.cfgFilePath = pcCfgFilePath;
+        //配置云+端数据
+        blInitParam.dataPath.onlinePath = pcCfgFilePath + "/online/";
         //离线地图
         blInitParam.dataPath.offlinePath = pcCfgFilePath + "/data/navi/compile_v2/chn/";
         //精品三维地图
         blInitParam.dataPath.off3DDataPath = pcCfgFilePath + "/data/navi/compile_v2/chn/";
+
         f = new File(blInitParam.dataPath.offlinePath);
         if (!f.exists()) {
             f.mkdirs();

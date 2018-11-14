@@ -6,11 +6,11 @@ import android.util.Log;
 import com.amap.gbl.sdkdemo.CommonUtil;
 import com.autonavi.gbl.biz.bizenum.AutoCarStyleParam;
 import com.autonavi.gbl.biz.bizenum.AutoOverlayType;
-import com.autonavi.gbl.biz.bizenum.BizPointExtralDataType;
 import com.autonavi.gbl.biz.bizenum.LineItemType;
 import com.autonavi.gbl.biz.bizenum.PathLineStyleType;
 import com.autonavi.gbl.biz.bizenum.RouteCompareTipsType;
 import com.autonavi.gbl.biz.bizenum.RouteOverlayElem;
+import com.autonavi.gbl.biz.bizenum.BizPointExtraDataType;
 import com.autonavi.gbl.biz.model.BizBundle;
 import com.autonavi.gbl.biz.model.BizBundleTag;
 import com.autonavi.gbl.biz.model.BizCallbackData;
@@ -22,7 +22,7 @@ import com.autonavi.gbl.biz.model.BizPointMarker;
 import com.autonavi.gbl.biz.model.BizPolygonMarker;
 import com.autonavi.gbl.biz.model.CarAnimationStyle;
 import com.autonavi.gbl.biz.model.CarMarkStyle;
-import com.autonavi.gbl.biz.model.CrossVectorMaker;
+import com.autonavi.gbl.biz.model.CrossVectorMarker;
 import com.autonavi.gbl.biz.model.RouteArrowStyle;
 import com.autonavi.gbl.biz.observer.IMapStyleReader;
 import com.autonavi.gbl.common.model.RectInt32;
@@ -439,32 +439,6 @@ public class MapStyleReader implements IMapStyleReader {
         return false;
     }
 
-    /**
-     * 函数名                GetCarMakerId
-     *
-     * @return void
-     * @brief 获取车标的纹理信息
-     * @param[in] mode 当前模式
-     * @param[in] bGpsSuccess  gtrue：GPS信号正常 gfalse：gps信号不正常
-     * @param[in/out] carStyle   车标makerId
-     */
-    @Override
-    public void getCarMakerId(@AutoCarStyleParam.AutoCarStyleParam1 int style,
-                              boolean bGpsSuccess, CarMarkStyle carStyle) {
-        Log.i(TAG, "getCarMakerId: style = " + style + ",carStyle = " + carStyle);
-        //车标相关图层，其它属性也建议配置进去
-        carStyle.carId = MarkUtils.MARKER_ID_CAR;
-        carStyle.carDirId = MarkUtils.MARKER_ID_CAR_DIRECTION;
-        carStyle.carFlashId = MarkUtils.MARKER_ID_FLASH;
-        carStyle.carLineId = MarkUtils.MARKER_ID_MAP_LR;
-        carStyle.endLineColor = ENDLINECOLOR;
-        carStyle.endLineWidth = ENDLINEWIDTH;
-        carStyle.eastResID = MarkUtils.MARKER_ID_EAST;
-        carStyle.southResID = MarkUtils.MARKER_ID_SOUTH;
-        carStyle.westResID = MarkUtils.MARKER_ID_WEST;
-        carStyle.northResID = MarkUtils.MARKER_ID_NORTH;
-        carStyle.relativeDistance = 65;
-    }
 
     @Override
     public void getCarAnimationStyle(@AutoCarStyleParam.AutoCarStyleParam1 int style, CarAnimationStyle carAnStyle) {
@@ -482,33 +456,33 @@ public class MapStyleReader implements IMapStyleReader {
      * @brief 获取非通用点的信息
      * @param[in] dataInfo 额外的数据信息
      * @param[in/out] vecMarker  HMI填充的纹理信息
-     * @note 当dataInfo.extralDataType == TrafficFacilityCameraType,表示传入的是巡航交通设施电子眼信息(例如:测速摄像头,监控摄像头,穿红灯,违章拍照,/公交,应急车道,非机动车道拍照,只在巡航模式生效，导航中不生效。),info.bizDataInfo.cruiseFacilityInfo 有效
-     * 当dataInfo.extralDataType == TrafficEventInfoType,表示传入的巡航交通事件息(例如车祸,施工等),info.bizDataInfo.congesttion有效
-     * 当dataInfo.extralDataType == TrafficFacilityInfoType,表示传入的是巡航交通设施电子眼信息(例如前方左转,右转,落石等),info.bizDataInfo.cruiseFacilityInfo 有效
+     * @note 当dataInfo.extraDataType == TrafficFacilityCameraType,表示传入的是巡航交通设施电子眼信息(例如:测速摄像头,监控摄像头,穿红灯,违章拍照,/公交,应急车道,非机动车道拍照,只在巡航模式生效，导航中不生效。),info.bizDataInfo.cruiseFacilityInfo 有效
+     * 当dataInfo.extraDataType == TrafficEventInfoType,表示传入的巡航交通事件息(例如车祸,施工等),info.bizDataInfo.congestion有效
+     * 当dataInfo.extraDataType == TrafficFacilityInfoType,表示传入的是巡航交通设施电子眼信息(例如前方左转,右转,落石等),info.bizDataInfo.cruiseFacilityInfo 有效
      */
     @Override
     public BizPointMarker[] getExtraPointMarker(BizPointExtraDataInfo dataInfo) {
-        Log.i(TAG, "getExtraPointMarker: dataInfo = " + dataInfo.extralDataType);
+        Log.i(TAG, "getExtraPointMarker: dataInfo = " + dataInfo.extraDataType);
         int length = dataInfo.bizDataInfo.cruiseFacilityInfo.length;
         BizPointMarker[] bizPointMarkers = new BizPointMarker[length];
         for (int i = 0; i < length; ++i) {
             bizPointMarkers[i] = new BizPointMarker();
         }
         // BL2.0 与向东确认后，巡航的样式Marker回调写在这里
-        if (dataInfo.extralDataType == BizPointExtralDataType.CruiseTrafficEventInfoType) { //巡航交通事件类型
+        if (dataInfo.extraDataType == BizPointExtraDataType.CruiseTrafficEventInfoType) { //巡航交通事件类型
             //对应BL1.x的CruiseNoNaviCongestionEventOverlayItem
             for (int i = 0; i < length; ++i) {
                 MarkUtils.createMakerByText(mContext, mMapView, "巡航交通事件", 0, MarkUtils.MARKER_ID_CRUISE_TRAFFIC);
                 bizPointMarkers[i].mPoiMarkerID = MarkUtils.MARKER_ID_CRUISE_TRAFFIC;
             }
-        } else if (dataInfo.extralDataType == BizPointExtralDataType.CruiseTrafficFacilityInfoType) { ///**< 巡航交通设施信息*/
+        } else if (dataInfo.extraDataType == BizPointExtraDataType.CruiseTrafficFacilityInfoType) { ///**< 巡航交通设施信息*/
             //对应BL1.x的CruiseRoadFacilityOverlayItem
             for (int i = 0; i < length; ++i) {
                 MarkUtils.createMakerByText(mContext, mMapView, "巡航交通设施信息", 0, MarkUtils.MARKER_ID_CRUISE_FAC);
                 bizPointMarkers[i].mPoiMarkerID = MarkUtils.MARKER_ID_CRUISE_FAC;
             }
 
-        } else if (dataInfo.extralDataType == BizPointExtralDataType.CruiseTrafficFacilityCameraType) { //   /**< 巡航电子眼*/
+        } else if (dataInfo.extraDataType == BizPointExtraDataType.CruiseTrafficFacilityCameraType) { //   /**< 巡航电子眼*/
             //对应BL1.x的CruiseCameraOverlayItem
             for (int i = 0; i < length; ++i) {
                 MarkUtils.createMakerByText(mContext, mMapView, "巡航电子眼", 0, MarkUtils.MARKER_ID_CRUISE_EDOG);
@@ -529,23 +503,23 @@ public class MapStyleReader implements IMapStyleReader {
      * @param[in] dataInfo
      * CongestionStatus 额外的数据信息 0:道路状态未知,1:道路通畅,2:道路缓行, 3:道路阻塞,4:严重拥堵,5:极度拥堵
      * @param[in/out] vecMarker  HMI填充的纹理信息
-     * 当dataInfo.extralDataType == CruiseCongestionInfoType,表示传入的巡航拥堵信息,info.bizDataInfo.congesttion有效
+     * 当dataInfo.extraDataType == CruiseCongestionInfoType,表示传入的巡航拥堵信息,info.bizDataInfo.congestion有效
      */
     @Override
     public BizLineMarker[] getExtraLineMarker(BizPointExtraDataInfo dataInfo) {
         CommonUtil.showShortToast("拥堵路段回调");
 //        CommonUtil.writeTxtToSDCard("拥堵纹理回传getExtraLineMarker", new Gson().toJson(dataInfo));
         BizLineMarker[] bizLineMarkers = null;
-        if (dataInfo.extralDataType == BizPointExtralDataType.CruiseCongestionInfoType) {  //拥堵数据
+        if (dataInfo.extraDataType == BizPointExtraDataType.CruiseCongestionInfoType) {  //拥堵数据
             //对应BL1.x的GLLineOverlayItem
-            int length = dataInfo.bizDataInfo.congesttion.length;
+            int length = dataInfo.bizDataInfo.congestion.length;
             bizLineMarkers = new BizLineMarker[length];
             for (int i = 0; i < length; ++i) {
                 bizLineMarkers[i] = new BizLineMarker();
 //                bizLineMarkers[i].mLineWidth = 24;
                 bizLineMarkers[i].mLineColor = (0xFFFFFFFF);
                 int lineId = 0;
-                switch (dataInfo.bizDataInfo.congesttion[i].congestionStatus) {
+                switch (dataInfo.bizDataInfo.congestion[i].congestionStatus) {
                     case CONGESTION_STATUS_SLOW://道路缓行
                         bizLineMarkers[i].mLineWidth = 24;//越堵越粗
                         lineId = MarkUtils.MARKER_ID_MAP_SLOW;
@@ -592,7 +566,7 @@ public class MapStyleReader implements IMapStyleReader {
      * @param[out] VectorCrossAttr 矢量路口放大图属性
      */
     @Override
-    public void getCrossVectorAttr(int naviType, CrossVectorMaker CrossMaker, VectorCrossAttr
+    public void getCrossVectorAttr(int naviType, CrossVectorMarker CrossMaker, VectorCrossAttr
             CrossAttr) {
         Log.i(TAG, "getCrossVectorAttr: navitype = " + naviType);
         CrossMaker.arrowResIdOuter = MarkUtils.MARKER_ID_ARROW_OUT;
@@ -812,6 +786,38 @@ public class MapStyleReader implements IMapStyleReader {
         initRouteArrow(routeStyle);
     }
 
+    /**
+     * 函数名                GetCarMakerId
+     *
+     * @return void
+     * @brief 获取车标的纹理信息
+     * @param[in] mode 当前模式
+     * @param[in] bGpsSuccess  gtrue：GPS信号正常 gfalse：gps信号不正常
+     * @param[in/out] carStyle   车标makerId
+     */
+    @Override
+    public void getCarMarkerId(@AutoCarStyleParam.AutoCarStyleParam1 int style,
+                              boolean bGpsSuccess, CarMarkStyle carStyle) {
+        Log.i(TAG, "getCarMakerId: style = " + style + ",carStyle = " + carStyle);
+        //车标相关图层，其它属性也建议配置进去
+        carStyle.carId = MarkUtils.MARKER_ID_CAR;
+        carStyle.carDirId = MarkUtils.MARKER_ID_CAR_DIRECTION;
+        carStyle.carFlashId = MarkUtils.MARKER_ID_FLASH;
+        carStyle.carLineId = MarkUtils.MARKER_ID_MAP_LR;
+        carStyle.endLineColor = ENDLINECOLOR;
+        carStyle.endLineWidth = ENDLINEWIDTH;
+        carStyle.eastResID = MarkUtils.MARKER_ID_EAST;
+        carStyle.southResID = MarkUtils.MARKER_ID_SOUTH;
+        carStyle.westResID = MarkUtils.MARKER_ID_WEST;
+        carStyle.northResID = MarkUtils.MARKER_ID_NORTH;
+        carStyle.relativeDistance = 65;
+    }
+
+    @Override
+    public void getScaleCarStyle(@AutoCarStyleParam.AutoCarStyleParam1 int style,
+                                 boolean bGpsSuccess, float fScale, CarMarkStyle carStyle ) {
+
+    }
 
     private void initRouteArrow(RouteArrowStyle routeArrowStyle) {
         routeArrowStyle.mAutoZoomerWidth = false;

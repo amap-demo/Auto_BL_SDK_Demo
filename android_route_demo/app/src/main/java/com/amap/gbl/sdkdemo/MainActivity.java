@@ -327,6 +327,8 @@ public class MainActivity extends AppCompatActivity implements IRouteObserverPre
         BLInitParam blInitParam = new BLInitParam();
         //配置文件路径
         blInitParam.dataPath.cfgFilePath = pcCfgFilePath;
+        //配置云+端数据路径
+        blInitParam.dataPath.onlinePath = pcCfgFilePath + "/online/";
         //离线地图
         blInitParam.dataPath.offlinePath = pcCfgFilePath + "/data/navi/compile_v2/chn/";
         //精品三维地图
@@ -803,7 +805,7 @@ public class MainActivity extends AppCompatActivity implements IRouteObserverPre
                 String tips = restrictionInfo.tips;      //!< tips描述
                 int cityCode = restrictionInfo.cityCode;     //!< 城市代码
                 short mType = restrictionInfo.type;       //!< 类型
-                short titleType = restrictionInfo.titleType;  //!< tips类型
+                int titleType = restrictionInfo.titleType;  //!< tips类型
                 ArrayList<Long> ruleIDs = restrictionInfo.ruleIDs; //!< 规则ID 新增字段
 
                 StringBuffer sb = new StringBuffer();

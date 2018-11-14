@@ -67,6 +67,7 @@ import com.autonavi.gbl.servicemanager.model.ServiceDataPath;
 import com.autonavi.gbl.servicemanager.model.ServiceManagerEnum;
 import com.autonavi.gbl.common.model.WorkPath;
 import com.autonavi.gbl.common.model.UserConfig;
+import com.autonavi.gbl.pos.model.PosWorkPath;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -473,8 +474,22 @@ public class MainActivity extends Activity
     private void initPos() {
         mPosService = (PosService)ServiceMgr.getServiceMgrInstance().getBLService(
             ServiceManagerEnum.PosSingleServiceID);
+        PosWorkPath posWorkPath = new PosWorkPath();
+
+        posWorkPath.locPath  = IOUtils.getAppSDCardFileDir() + File.separator + "loc";
+        posWorkPath.contextPath  = IOUtils.getAppSDCardFileDir() + File.separator + "pos_context";
+        File locPath = new File(posWorkPath.locPath );
+        if (!locPath.exists()) {
+            locPath.mkdir();
+        }
+
+        File contextPath = new File(posWorkPath.contextPath );
+        if (!contextPath.exists()) {
+            contextPath.mkdir();
+        }
+
         LocModeType type = new LocModeType();
-        mPosInitResult = mPosService.init(type);
+        mPosInitResult = mPosService.init(posWorkPath,type);
         Log.i(TAG, "initPos: pos = " + mPosInitResult);
         //0步行  1自驾  2公交车
         mPosService.setMatchMode(1);

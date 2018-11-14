@@ -289,6 +289,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         BLInitParam blInitParam = new BLInitParam();
         //配置文件路径
         blInitParam.dataPath.cfgFilePath = pcCfgFilePath;
+        //配置云+端数据路径
+        blInitParam.dataPath.onlinePath = pcCfgFilePath + "/online/";
         //离线地图
         blInitParam.dataPath.offlinePath = pcCfgFilePath + "/data/navi/compile_v2/chn/";
         //精品三维地图

@@ -23,6 +23,7 @@ import com.autonavi.gbl.biz.bizenum.SceneControlType;
 import com.autonavi.gbl.biz.model.CarLocation;
 import com.autonavi.gbl.common.model.Coord2DDouble;
 import com.autonavi.gbl.common.path.drive.model.POIForRequest;
+import com.autonavi.gbl.common.path.drive.model.TollGateInfo;
 import com.autonavi.gbl.common.path.model.option.RerouteOption;
 import com.autonavi.gbl.common.path.model.option.RouteOptionEnum;
 import com.autonavi.gbl.guide.GuideService;
@@ -41,7 +42,9 @@ import com.autonavi.gbl.guide.model.NaviFacility;
 import com.autonavi.gbl.guide.model.NaviInfo;
 import com.autonavi.gbl.guide.model.NaviIntervalCamera;
 import com.autonavi.gbl.guide.model.NaviIntervalCameraDynamicInfo;
+import com.autonavi.gbl.guide.model.NaviRoadFacility;
 import com.autonavi.gbl.guide.model.NaviStatisticsInfo;
+import com.autonavi.gbl.guide.model.NaviWeatherInfo;
 import com.autonavi.gbl.guide.model.ObtainInfo;
 import com.autonavi.gbl.guide.model.PathTrafficEventInfo;
 import com.autonavi.gbl.guide.model.RouteTrafficEventInfo;
@@ -737,6 +740,21 @@ public class MyNaviObserver implements INaviObserver {
     @Override
     public void onShowSameDirectionMixForkInfo(List<MixForkInfo> list) {
         Log.i(TAG, "onShowSameDirectionMixForkInfo: ");
+    }
+
+    @Override
+    public void onShowNaviWeather(List<NaviWeatherInfo> list) {
+
+    }
+
+    @Override
+    public void onShowNaviFacility(List<NaviRoadFacility> list) {
+
+    }
+
+    @Override
+    public void onShowTollGateLane(TollGateInfo tollGateInfo) {
+
     }
 
 }

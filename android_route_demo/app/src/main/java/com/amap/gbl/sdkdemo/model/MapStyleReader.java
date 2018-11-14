@@ -7,7 +7,6 @@ import android.util.Log;
 import com.amap.gbl.sdkdemo.platform.CommonUtil;
 import com.autonavi.gbl.biz.bizenum.AutoCarStyleParam;
 import com.autonavi.gbl.biz.bizenum.AutoOverlayType;
-import com.autonavi.gbl.biz.bizenum.BizPointExtralDataType;
 import com.autonavi.gbl.biz.bizenum.LineItemType;
 import com.autonavi.gbl.biz.bizenum.PathLineStyleType;
 import com.autonavi.gbl.biz.bizenum.RouteCompareTipsType;
@@ -23,7 +22,7 @@ import com.autonavi.gbl.biz.model.BizPointMarker;
 import com.autonavi.gbl.biz.model.BizPolygonMarker;
 import com.autonavi.gbl.biz.model.CarAnimationStyle;
 import com.autonavi.gbl.biz.model.CarMarkStyle;
-import com.autonavi.gbl.biz.model.CrossVectorMaker;
+import com.autonavi.gbl.biz.model.CrossVectorMarker;
 import com.autonavi.gbl.biz.model.RouteArrowStyle;
 import com.autonavi.gbl.biz.observer.IMapStyleReader;
 import com.autonavi.gbl.common.model.RectInt32;
@@ -431,20 +430,7 @@ public class MapStyleReader implements IMapStyleReader {
         return false;
     }
 
-    /**
-     * 函数名                GetCarMakerId
-     *
-     * @return void
-     * @brief 获取车标的纹理信息
-     * @param[in] mode 当前模式
-     * @param[in] bGpsSuccess  gtrue：GPS信号正常 gfalse：gps信号不正常
-     * @param[in/out] carStyle   车标makerId
-     */
-    @Override
-    public void getCarMakerId(@AutoCarStyleParam.AutoCarStyleParam1 int style,
-                              boolean bGpsSuccess, CarMarkStyle carStyle) {
 
-    }
 
     @Override
     public void getCarAnimationStyle(@AutoCarStyleParam.AutoCarStyleParam1 int style, CarAnimationStyle carAnStyle) {
@@ -503,7 +489,7 @@ public class MapStyleReader implements IMapStyleReader {
      * @param[out] VectorCrossAttr 矢量路口放大图属性
      */
     @Override
-    public void getCrossVectorAttr(int naviType, CrossVectorMaker CrossMaker, VectorCrossAttr
+    public void getCrossVectorAttr(int naviType, CrossVectorMarker CrossMaker, VectorCrossAttr
             CrossAttr) {
 
     }
@@ -666,6 +652,33 @@ public class MapStyleReader implements IMapStyleReader {
                                    RouteArrowStyle routeStyle,
                                    BizBundle extraPara) {
         initRouteArrow(routeStyle);
+    }
+
+    /**
+     * 函数名                GetCarMakerId
+     *
+     * @return void
+     * @brief 获取车标的纹理信息
+     * @param[in] style 样式参数
+     * @param[in] bGpsSuccess  gtrue：GPS信号正常 gfalse：gps信号不正常
+     * @param[in/out] carStyle   车标makerId
+     */
+
+    @Override
+    public void getCarMarkerId(@AutoCarStyleParam.AutoCarStyleParam1 int 	style,
+                               boolean 	bGpsSuccess, CarMarkStyle carStyle)
+    {
+
+    }
+
+
+    @Override
+    public void getScaleCarStyle(@AutoCarStyleParam.AutoCarStyleParam1 int style,
+                                 boolean 	bGpsSuccess,
+                                 float 	fScale,
+                                 CarMarkStyle 	carStyle)
+    {
+
     }
 
 
